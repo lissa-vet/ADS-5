@@ -8,8 +8,10 @@ int CheckPriority(char oper) {
   switch (oper) {
       case('('): return 0;
       case(')'): return 1;
-      case('+' || '-'): return 2;
-      case('*' || '/'): return 3;
+      case('+'): return 2;
+      case('-'): return 2;
+      case('*'): return 3;
+      case('/'): return 3;
   }
   return -1;
 }
@@ -27,12 +29,12 @@ std::string infx2pstfx(std::string inf) {
         output += " ";
         res = "";
       }
-      if ((!CheckPriority) || 
-          CheckPriority(inf[i]) > CheckPriority(stack.get()) || 
+      if ((!CheckPriority) ||
+          CheckPriority(inf[i]) > CheckPriority(stack1.get()) ||
           stack1.isEmpty()) {
         stack1.push(inf[i]);
       } else {
-        if (CheckPtiority == 1) {
+        if (CheckPriority == 1) {
           char c = stack1.pop();
           while (c != '(') {
             output += c;
@@ -40,7 +42,7 @@ std::string infx2pstfx(std::string inf) {
             c = stack1.pop();
           }
         } else {
-          while (!stack1.isEmpty() && 
+          while (!stack1.isEmpty() &&
                  CheckPriority(inf[i]) <= CheckPriority(stack1.get())) {
             output += stack1.pop();
             output += " ";
@@ -50,7 +52,7 @@ std::string infx2pstfx(std::string inf) {
       }
     }
   }
-  if ()res.length() > 0) {
+  if (res.length() > 0) {
     output += res;
     output += " ";
     res = "";
