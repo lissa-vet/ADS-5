@@ -5,11 +5,11 @@
 
 template<typename T, int size>
 class TStack {
-private:
+ private:
   T* arr;
   int top;
-  
-public:
+
+ public:
   TStack(): top(-1) {
     arr = new T[size];
   }
@@ -20,7 +20,7 @@ public:
       srr[++top] = value;
     }
   }
-  
+
   const T& pop() {
     if (isEmpty()) {
     throw std::string("Empty stack");
@@ -28,15 +28,15 @@ public:
       return arr[top--];
     }
   }
-  
+
   const T& get() const {
     if (isEmpty()) {
-      throw std::string ("Empty stack");
+      throw std::string("Empty stack");
     } else {
       return arr[top];
     }
   }
-  
+
   bool isEmpty() const {
     if (top == -1) {
       return true;
@@ -44,7 +44,7 @@ public:
       return false;
     }
   }
-  
+
   bool isFull() const {
     if (top == (size-1)) {
       return true;
