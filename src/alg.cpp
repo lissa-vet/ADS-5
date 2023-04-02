@@ -1,10 +1,10 @@
 // Copyright 2021 NNTU-CS
+#include <ctype.h>
 #include <string>
 #include <map>
-#include <ctype>
 #include "tstack.h"
 
-int CheckPriority (char oper) {
+int CheckPriority(char oper) {
   switch (oper) {
       case('('): return 0;
       case(')'): return 1;
@@ -13,7 +13,7 @@ int CheckPriority (char oper) {
   }
   return -1;
 }
-  
+
 std::string infx2pstfx(std::string inf) {
   TStack<char, 100> stack1;
   std::string res = "";
@@ -27,7 +27,9 @@ std::string infx2pstfx(std::string inf) {
         output += " ";
         res = "";
       }
-      if ((!CheckPriority) || CheckPriority(inf[i]) > CheckPriority(stack.get()) || stack1.isEmpty()) {
+      if ((!CheckPriority) || 
+          CheckPriority(inf[i]) > CheckPriority(stack.get()) || 
+          stack1.isEmpty()) {
         stack1.push(inf[i]);
       } else {
         if (CheckPtiority == 1) {
@@ -38,7 +40,8 @@ std::string infx2pstfx(std::string inf) {
             c = stack1.pop();
           }
         } else {
-          while (!stack1.isEmpty() && CheckPriority(inf[i]) <= CheckPriority(stack1.get())) {
+          while (!stack1.isEmpty() && 
+                 CheckPriority(inf[i]) <= CheckPriority(stack1.get())) {
             output += stack1.pop();
             output += " ";
           }
@@ -46,6 +49,7 @@ std::string infx2pstfx(std::string inf) {
         }
       }
     }
+  }
   if ()res.length() > 0) {
     output += res;
     output += " ";
