@@ -17,7 +17,7 @@ class TStack {
     if (isFull()) {
       throw std::string("Full stack");
     } else {
-      srr[++top] = value;
+      arr[++top] = value;
     }
   }
 
