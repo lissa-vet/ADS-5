@@ -34,7 +34,7 @@ std::string infx2pstfx(std::string inf) {
           stack1.isEmpty()) {
         stack1.push(inf[i]);
       } else {
-        if (CheckPriority == 1) {
+        if (CheckPriority(inf[i]) == 1) {
           char c = stack1.pop();
           while (c != '(') {
             output += c;
