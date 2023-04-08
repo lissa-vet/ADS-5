@@ -44,7 +44,7 @@ std::string infx2pstfx(std::string inf) {
                 output += " ";
                 res = "";
             }
-            if ((!CheckPriority) ||
+            if (inf[i] == '(' ||
                 CheckPriority(inf[i]) > CheckPriority(stack1.get()) ||
                 stack1.isEmpty()) {
                 stack1.push(inf[i]);
@@ -57,7 +57,7 @@ std::string infx2pstfx(std::string inf) {
                         c = stack1.pop();
                     } else {
                         while (!stack1.isEmpty() &&
-                               CheckPriority(inf[i]) <= CheckPriority(stack1.get())) {
+                        CheckPriority(inf[i]) <= CheckPriority(stack1.get())) {
                                output += stack1.pop();
                                output += " ";
                   }
@@ -84,8 +84,7 @@ int eval(std::string pref) {
         char a = pref[i];
         if (isdigit(a)) {
             stack2.push(number(a));
-        }
-        else {
+        } else {
             int t2 = stack2.get();
             stack2.pop();
             int t1 = stack2.get();
