@@ -38,8 +38,7 @@ std::string infx2pstfx(std::string inf) {
     for (int i = 0; i < inf.length(); i++) {
         if (isdigit(inf[i])) {
             res += inf[i];
-        }
-        else {
+        } else {
             if (res.length() > 0) {
                 output += res;
                 output += " ";
@@ -49,22 +48,19 @@ std::string infx2pstfx(std::string inf) {
                 CheckPriority(inf[i]) > CheckPriority(stack1.get()) ||
                 stack1.isEmpty()) {
                 stack1.push(inf[i]);
-            }
-            else {
+            } else {
                 if (CheckPriority(inf[i]) == 1) {
                     char c = stack1.pop();
                     while (c != '(') {
                         output += c;
                         output += " ";
                         c = stack1.pop();
-                    }
-                }
-                else {
-                    while (!stack1.isEmpty() &&
-                        CheckPriority(inf[i]) <= CheckPriority(stack1.get())) {
-                        output += stack1.pop();
-                        output += " ";
-                    }
+                    } else {
+                        while (!stack1.isEmpty() &&
+                               CheckPriority(inf[i]) <= CheckPriority(stack1.get())) {
+                               output += stack1.pop();
+                               output += " ";
+                  }
                     stack1.push(inf[i]);
                 }
             }
