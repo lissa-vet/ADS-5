@@ -30,11 +30,7 @@ class TStack {
   }
 
   const T& get() const {
-    if (isEmpty()) {
-      throw std::string("Empty stack");
-    } else {
-      return arr[top];
-    }
+    return arr[top];
   }
 
   bool isEmpty() const {
